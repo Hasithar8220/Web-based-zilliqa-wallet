@@ -1,0 +1,14 @@
+{
+  "dependencies": {
+    "@zilliqa-js/zilliqa": "^0.8.9",
+    "cookie-parser": "^1.4.4",
+    "ejs": "^3.0.1",
+    "express": "^4.17.1",
+    "express-fileupload": "^1.1.6",
+    "express-session": "^1.17.0",
+    "fs": "0.0.1-security",
+    "node-localstorage": "^2.1.5",
+    "pify": "^5.0.0",
+    "tslib": "^1.11.0"
+  }
+}
