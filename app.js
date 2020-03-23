@@ -45,7 +45,25 @@ app.get('/auth', function (req, res) {
 
 app.get('/viewhistory', function (req, res) {
 
-  res.render('viewhistory', {data:null});
+  const request = require('request');
+
+let url='https://api.viewblock.io/v1/zilliqa/addresses/'+req.session.address+'/txs?network=testnet';
+console.log(url);
+request({
+  method: 'GET',
+  url: url,
+  headers: {
+    'X-APIKEY': config.key
+  }}, function (error, response, body) {
+ 
+    console.log(body);
+
+  res.render('viewhistory', {
+    data: JSON.parse(body),
+    error: null
+  });
+});
+
 
 });
 
@@ -121,24 +139,7 @@ app.post('/sendTransaction', function (req, res) {
 
   app.post('/loadHistory', function (req, res) {
    
-    const request = require('request');
-
-let url='https://api.viewblock.io/v1/zilliqa/addresses/'+req.session.address+'/txs?network=testnet';
-console.log(url);
-request({
-  method: 'GET',
-  url: url,
-  headers: {
-    'X-APIKEY': config.key
-  }}, function (error, response, body) {
- 
-
-  res.render('viewhistory', {
-    data: JSON.parse(body),
-    error: null
-  });
-});
-
+    
   });
 
 

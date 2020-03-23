@@ -9,6 +9,7 @@
     "fs": "0.0.1-security",
     "node-localstorage": "^2.1.5",
     "pify": "^5.0.0",
+    "request": "^2.88.2",
     "tslib": "^1.11.0"
   }
 }
