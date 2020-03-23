@@ -3,6 +3,7 @@ const upload = require("express-fileupload");
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const session= require('express-session');
+const config = require('./config.json');
 
 //Calling walletData service 
 const walletData = require('./services/ZilliqaService.js');
@@ -120,10 +121,24 @@ app.post('/sendTransaction', function (req, res) {
 
   app.post('/loadHistory', function (req, res) {
    
-    let wData = new walletData();   
-    let arr=wData.getRecentTransactions();
-    
-    res.render('viewHistory',{data:arr});  
+    const request = require('request');
+
+let url='https://api.viewblock.io/v1/zilliqa/addresses/'+req.session.address+'/txs?network=testnet';
+console.log(url);
+request({
+  method: 'GET',
+  url: url,
+  headers: {
+    'X-APIKEY': config.key
+  }}, function (error, response, body) {
+ 
+
+  res.render('viewhistory', {
+    data: JSON.parse(body),
+    error: null
+  });
+});
+
   });
 
 

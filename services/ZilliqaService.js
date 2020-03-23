@@ -21,18 +21,6 @@ const chainId = 333; // chainId of the developer testnet
 const msgVersion = 1; // current msgVersion
 const VERSION = bytes.pack(chainId, msgVersion);
 
-// Populate the wallet with an account
-//const privateKey =
- // '3375F915F3F9AE35E6B301B7670F53AD1A5BE15D8221EC7FD5E503F21D3450C8';
-
-//zilliqa.wallet.addByPrivateKey(privateKey);
-
-//const address = getAddressFromPrivateKey(privateKey);
-
-//const address ='0xA9eB343dF14f0B3F9528E96E298451f09b70A7A5';
-
-//console.log(`My account address is: ${address}`);
-//console.log(`My account bech32 address is: ${toBech32Address(address)}`);
 
 class walletData {
 
@@ -64,27 +52,7 @@ class walletData {
 ///Get Transactions Hostory
      getRecentTransactions(){
 
-     // const txs = await zilliqa.blockchain.getRecentTransactions();
-
-      let ids=localStorage.getItem('txids');
-      var res = ids.split(',');
-      var outPut=[];
-
-      res.forEach(async (item)=>{
-
-        try {
-          const tx = await zilliqa.blockchain.getTransaction(
-            item,
-          );
-          console.log(tx.getReceipt());
-          outPut.push(tx);
-          
-        } catch (e) {
-          console.log(e);
-        }
-  
-      });
-
+    
 
       return outPut;
       
